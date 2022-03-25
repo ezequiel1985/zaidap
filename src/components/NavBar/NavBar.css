@@ -1,0 +1,23 @@
+    .topnav {
+        background-color: #595959;
+        overflow: hidden;
+        margin: 1vh auto;
+      }
+      
+      /* Aplicar estilo a los enlaces dentro de la barra de navegación */
+      .topnav a {
+        float: left;
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 5px 16px;
+        text-decoration: none;
+        font-size: 16px;
+      }
+                
+      /* Agrega una clase activa para resaltar la página actual */
+      .topnav a.active {
+        background-color: #87D6F7;
+        color: #595959;      
+      }
+      
