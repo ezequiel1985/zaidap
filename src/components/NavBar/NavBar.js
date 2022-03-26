@@ -1,3 +1,4 @@
+import CartWidget from './CartWidget'
 import './NavBar.css'
 
 
@@ -10,10 +11,11 @@ const NavBar = () => {
                     <a href="/">Contacto</a>
                     <a href="/" target="_blank">Ofertas</a>
                     <a href="https://api.whatsapp.com/send?phone=542615029188" target="_blank">Whatsapp</a>
-                    <a href="/" class="icon" onclick="myFunction()" target="_blank">
+                    <CartWidget />
+                    {/*<a href="/" class="icon" onclick="myFunction()" target="_blank">
                     <img src='./images/cartIcon.svg'/>
                      4
-                    </a>
+                    </a>*/}
                 </div>
             </nav>
             )
