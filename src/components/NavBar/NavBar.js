@@ -5,7 +5,9 @@ import './NavBar.css'
 const NavBar = () => {
     return(
             <nav>
+                <img class="logo-img-none" src={'./images/logo-zaidap3.svg'} alt="" />
                 <img src={'./images/logo-zaidap1.svg'} alt="" />
+                <img class="logo-img-none"src={'./images/logo-zaidap2.svg'} alt="" />
                 <div class="topnav" id="myTopnav">
                     <a href="/" class="active">Productos</a>
                     <a href="/">Contacto</a>
