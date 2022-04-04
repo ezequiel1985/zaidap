@@ -3,7 +3,7 @@ import './NavBar.css'
 const CartWidget =() => {
     return(
         <>
-        <a href="/" class="icon" onclick="myFunction()" target="_blank">
+        <a href="/" className="icon" target="_blank">
             <img src='./images/cartIcon.svg'/>
         4
         </a>

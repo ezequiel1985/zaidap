@@ -1,0 +1,26 @@
+
+.container-item-count{
+    display: table;
+    margin: 0 auto;
+    flex-direction: column;
+    justify-content: center;
+    border: 2px solid #595959;
+    border-color: #595959;
+    width: 30%;
+    border-radius: 5%;
+}
+.container-button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    }
+.container-button button{
+    height: 3vh;
+    margin: 2vh;
+}
+
+.container-item-count button {
+    display: table;
+    margin: 0 auto;
+    margin-bottom: 1vh;
+}
