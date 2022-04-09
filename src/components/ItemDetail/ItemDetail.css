@@ -1,0 +1,33 @@
+.title{
+    font-size: 12px;
+    text-align: center;
+  }
+  .responsive {
+    width: 100%;
+    max-width: 220px;
+    height: auto;
+  }
+  .container-product{
+    border: solid 1px #595959;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 260px;
+    margin: 2vh auto;
+  }
+  
+  .container-product p {
+    font-size: 12px;
+    text-align: center;
+  }
+  .sombra {
+     float:left;
+     background-color: #A7A7A7;
+     margin: 10px 0 0 5px;
+  }
+  .sombra img {
+    display: block;
+    position: relative;
+    margin: -6px 6px 6px -6px;
+  }

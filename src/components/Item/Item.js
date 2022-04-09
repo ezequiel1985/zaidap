@@ -1,4 +1,4 @@
-import './ItemCount.css'
+import "./Item.css"
 
 const Item = ({title, pictureUrl, description, price})=>{
     return(
@@ -8,6 +8,7 @@ const Item = ({title, pictureUrl, description, price})=>{
             </picture>
             <h3>{title} a solo ${price}</h3>
             <p>{description}</p>
+            <button>Ver detalle</button>
         </section>
     )
 }

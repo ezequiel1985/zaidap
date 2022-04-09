@@ -1,8 +1,7 @@
-
-import ItemCount from "./ItemCount"
+import ItemCount from '../ItemCount/ItemCount'
 import {useState, useEffect} from 'react'
 import { getProductos } from "../../asyncMock"
-import ItemList from "./ItemList"
+import ItemList from "../ItemList/ItemList"
 
 
 const ItemListContainer = (props) =>{
