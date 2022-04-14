@@ -1,6 +1,6 @@
 import "./Item.css"
 
-const Item = ({title, pictureUrl, description, price})=>{
+const Item = ({id, title, pictureUrl, description, price})=>{
     return(
         <section className="item-list">
             <picture className='item-list-img'>
