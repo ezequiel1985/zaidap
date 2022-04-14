@@ -19,10 +19,10 @@ const products = [
 ]
 
 const categories = [
-    {id: 'placa', description: 'viriviri teclado'},
-    {id: 'teclado', description: 'viriviri teclado'},
-    {id: 'mouse', description: 'viriviri mouse'},
-    {id: 'monitor', description: 'viriviri monitor'}
+    {id: 'placa', description: 'PLACAS'},
+    {id: 'teclado', description: 'TECLADOS'},
+    {id: 'mouse', description: 'MOUSES'},
+    {id: 'monitor', description: 'MONITORES'}
 ]
 
 export const getCategories = () => {

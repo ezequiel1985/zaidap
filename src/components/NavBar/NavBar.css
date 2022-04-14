@@ -26,6 +26,23 @@
         background-color: #87D6F7;
         color: #595959;      
       }
+
+      .Categories {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        background: #595959;
+      }
+      .Option {
+        text-decoration: none;
+        background:#595959;
+        color: white;
+      }
+      .ActiveOption {
+        text-decoration: none;
+        background: #87D6F7;
+        color: #595959;
+      }
       
   @media(max-width: 970px) {
     .logo-img-none {
