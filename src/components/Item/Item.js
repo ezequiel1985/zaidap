@@ -10,7 +10,7 @@ const Item = ({id, title, pictureUrl, description, price})=>{
                 <h3>{title} a solo ${price}</h3>
                 <p>{description}</p>
             <button>
-              <Link to={`/detail/${id}`} >Ver detalle</Link>  
+              <Link to={`/detail/${id}`} className="detalle">Ver detalle</Link>  
             </button>
         </section>
     )

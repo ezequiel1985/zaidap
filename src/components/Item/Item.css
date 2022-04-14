@@ -20,5 +20,8 @@
       width: 90%;
   }
   .item-list button{
-      margin-bottom: 2vh;
+     margin-bottom: 2vh;
+  }
+  .detalle {
+      text-decoration: none;
   }
