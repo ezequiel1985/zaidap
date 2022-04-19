@@ -24,8 +24,7 @@ const ItemDetailContainer = ()=> {
 
     }, [productId]) // 2do paramentro del useEffecte puede ser null, vacio [] o [productId] ¿que hace cada uno? 
 
-    console.log(product)
-    
+       
     return(
         <>
         <div>
