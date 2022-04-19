@@ -8,7 +8,7 @@ const Item = ({id, title, pictureUrl, description, price})=>{
                 <img src={pictureUrl} alt={title}/>
             </picture>
                 <h3>{title} a solo ${price}</h3>
-                <p>{description}</p>
+                <p className="description">{description}</p>
             <button>
               <Link to={`/detail/${id}`} className="detalle">Ver detalle</Link>  
             </button>
