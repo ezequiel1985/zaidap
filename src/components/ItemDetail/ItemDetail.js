@@ -12,7 +12,7 @@ const ItemDetail = ({ id, title, category, price, description, pictureUrl,}) =>{
     const handleAdd = (count) => {
         console.log('Agregar al carrito ')
         const productObj = {
-            id, title, price, quantity: count
+            id, title, price, quantity: count, subtotal: price * count,
         }
 
         addItem(productObj)
@@ -31,6 +31,7 @@ const ItemDetail = ({ id, title, category, price, description, pictureUrl,}) =>{
             
             <footer>
             {isInCart(id) ? <button><Link to='/cart' style={{textDecoration:'none', alignItems:'center'}}>Ir al carrito</Link></button> : <ItemCount initial={0} stock={10} onAdd={handleAdd}/> }
+            {isInCart(id) ? <button><Link to='/cart' style={{textDecoration:'none', alignItems:'center'}}>Finalizar compra </Link></button> : "" }
             </footer>
             </div>
             </>

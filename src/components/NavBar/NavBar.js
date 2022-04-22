@@ -1,10 +1,14 @@
-import CartWidget from './CartWidget'
+import CartWidget from '../CartWidget/CartWidget'
 import './NavBar.css'
-import { Link, NavLink } from 'react-router-dom'
-import { useState, useEffect } from 'react'
+import { NavLink } from 'react-router-dom'
+import { useState, useEffect, useContext } from 'react'
 import { getCategories } from "../../asyncMock"
+import CartContext from '../../context/CartContext'
 
 const NavBar = () => {
+    
+    const { cart } = useContext(CartContext)
+
     const [categories,setCategories] = useState([])
 
     useEffect(()=>{
@@ -23,7 +27,9 @@ const NavBar = () => {
                     <a href="/">Contacto</a>
                     <a href="/" target="_blank">Ofertas</a>
                     <a href="https://api.whatsapp.com/send?phone=542615029188" target="_blank">Whatsapp</a>
-                    <CartWidget />
+                    {cart.length === 0 ?
+                     "" : 
+                     <CartWidget />}
                 </div>
                 <div className='Categories'>
                 {categories.map(cat => <NavLink key={cat.id} to={`/category/${cat.id}`}

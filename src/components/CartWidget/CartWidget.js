@@ -1,4 +1,3 @@
-import './NavBar.css'
 import CartContext from '../../context/CartContext';
 import { useContext } from 'react';
 
@@ -8,8 +7,8 @@ const CartWidget =() => {
 
     return(
         <>
-        <a href="/" className="icon" target="_blank">
-            <img src='./images/cartIcon.svg'/>
+        <a href="/cart" className="icon" /*target="_blank"*/>
+            <img src='../images/cartIcon.svg'/>
         { getQuantity() }
         </a>
         </>
