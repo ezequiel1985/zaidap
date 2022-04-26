@@ -12,7 +12,7 @@ const ItemDetail = ({ id, title, category, price, description, pictureUrl,}) =>{
     const handleAdd = (count) => {
         console.log('Agregar al carrito ')
         const productObj = {
-            id, title, price, quantity: count, subtotal: price * count,
+            id, title, price, quantity: count, 
         }
 
         addItem(productObj)

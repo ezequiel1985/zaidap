@@ -1,28 +1,42 @@
 import { useState, useEffect } from "react"
-import { getProductsById } from "../../asyncMock"
+//import { getProductsById } from "../../asyncMock"
 import ItemDetail from "../ItemDetail/ItemDetail"
 import { useParams } from "react-router-dom"
+//Conectamos con nuestra base (colección y documentos) en Firebase 
+import { firestoreDb } from '../../services/firebase'
+//Conectamos con las funciones de Firebase y entyre {} las requerimos.
+import { getDoc, doc } from 'firebase/firestore'
 
 const ItemDetailContainer = ()=> {
     const [product, setProduct] = useState()
-    const [loading, setLoading] = useState(true)
+    const [loading, setLoading] = useState(false)
 
     const { productId } = useParams()
 
     useEffect(() =>{
-        getProductsById(productId).then(item =>{
-            setProduct(item)
-        }).catch(err =>{
-            console.log(err)
-        }).finally(()=>{
-            setLoading(false)
-        })
+        // getProductsById(productId).then(item =>{
+        //     setProduct(item)
+        // }).catch(err =>{
+        //     console.log(err)
+        // }).finally(()=>{
+        //     setLoading(false)
+        // })
 
+        getDoc(doc(firestoreDb, 'products', productId)).then(response => {
+            console.log(response)
+            const product = { id: response.id, ...response.data()}
+            setProduct(product)
+            console.log(product, 'hola')
+        })
         return (()=>{
             setProduct()
         })
 
-    }, [productId]) // 2do paramentro del useEffecte puede ser null, vacio [] o [productId] ¿que hace cada uno? 
+    }, [productId]) 
+    // 2do paramentro useEffecte recibe una array.
+    // Si está vacio el componente se va a montar siempre. 
+    // Si el array está vacio [] se va a renderizar cuando el componente se monte
+    // Si estamos requieriendo dentro del array algún elemento se va a renderizar cuando se actualice. Por ejemplo puede estar recibiendo un booleano (true o false)  
 
        
     return(

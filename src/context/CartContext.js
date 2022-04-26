@@ -5,7 +5,7 @@ const CartContext = createContext()
 export const CartContextProvider = ({ children }) => {
 
     const[cart, setCart] = useState([])
-    console.log(cart)
+    
 
     // agrega productos al carrito, se utiliza en ItemDetail en función handleAdd
     // donde en el 2do parametro seteamos que addItem pase la info de productObj.
@@ -15,7 +15,7 @@ export const CartContextProvider = ({ children }) => {
     }
     //Muestra cantidad de productos en carrito en el CartWidgt
     const getQuantity = () => {
-        let count = 0
+        let count = 0;
         cart.forEach(prod => {
             count += prod.quantity
         })
@@ -27,14 +27,22 @@ export const CartContextProvider = ({ children }) => {
     const isInCart =(id) => {
         return cart.some(prod => prod.id === id)
     }
-    // Para vaciar el carrito (sin uso aún).
+    // Para vaciar el carrito .
     const clearCart = () =>{
         setCart([])
     }
-    //para remover productos del carrito (sin uso aún)
+    // Para remover productos del carrito.
     const removeItem = (id) => {
         const products = cart.filter(prod => prod.id !== id)
         setCart(products)
+    }
+    //Para obtener el valor final del carrito.
+    const getTotal = () =>{
+        let total = 0;
+        cart.forEach(prod =>{
+            total = total + (prod.quantity * prod.price)
+        })
+        return total
     }
 
     
@@ -46,6 +54,7 @@ export const CartContextProvider = ({ children }) => {
             isInCart,
             clearCart,
             removeItem,
+            getTotal
         }}>
             {children}
         </CartContext.Provider>

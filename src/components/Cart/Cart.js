@@ -5,21 +5,8 @@ import CartContext from "../../context/CartContext"
 
 const Cart = () => {
 
-    const { cart, removeItem, clearCart } = useContext(CartContext)
-
-    //Para obtener el valor final del carrito.
-    const [ total, setTotal] = useState(0)
-    useEffect(()=>{
-        const handlesumar = () =>{
-            const sumar = cart.map((saldo) => saldo.subtotal)
-            .reduce((prev, curr) => {
-                return prev + curr;
-            }, 0);
-            setTotal(sumar)
-        };
-        handlesumar();
-    })
-
+    const { cart, removeItem, clearCart, getTotal } = useContext(CartContext)
+    
     if(cart.length === 0) {
         return (
             <>
@@ -28,7 +15,7 @@ const Cart = () => {
             </>
         )
     }
-    
+
     return(
         <>
         <div>
@@ -39,7 +26,7 @@ const Cart = () => {
                 }
                 
             </ul>
-            <p>Total: {total}</p>
+            <p> Total: {getTotal()}</p>
             <button style={{textDecoration:'none', alignItems:'center'}} onClick={()=> clearCart()}>Limpiar Carrito</button>   
             <button> <Link to='/' style={{textDecoration:'none', alignItems:'center'}}>Terminar compra </Link></button>
         </div>
