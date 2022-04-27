@@ -11,7 +11,23 @@ export const CartContextProvider = ({ children }) => {
     // donde en el 2do parametro seteamos que addItem pase la info de productObj.
     //En linea 33 de ItemDetail lo ejecutamos en onAdd llamando a handleAdd.    
     const addItem = (productToAdd) => {
-        setCart([...cart, productToAdd])
+        if(!isInCart(productToAdd.id)){
+            setCart([...cart, productToAdd])
+        }else{
+            const newProducts = cart.map(prod => {
+                if(prod.id === productToAdd.id){
+                    const newProduct = {
+                        ...prod,
+                        quantity: productToAdd.quantity
+                    }
+                    return newProduct
+                }else{
+                    return prod
+                }
+            })
+            setCart(newProducts)
+        }
+        
     }
     //Muestra cantidad de productos en carrito en el CartWidgt
     const getQuantity = () => {
@@ -44,6 +60,12 @@ export const CartContextProvider = ({ children }) => {
         })
         return total
     }
+    // identificar la cantidad de productos que hay en carrito.
+    //se utiliza en itemDetail para indicar cual es la cantidad de la var initial 
+    // se utiliza en ItemCount, se pasa al useState initial como valor inicial para identificar la cantidad de X productos que hay en cart. 
+    const getQuantityProd = (id) => {
+        return cart.find(prod => prod.id === id)?.quantity
+    }
 
     
     return(
@@ -54,7 +76,8 @@ export const CartContextProvider = ({ children }) => {
             isInCart,
             clearCart,
             removeItem,
-            getTotal
+            getTotal,
+            getQuantityProd
         }}>
             {children}
         </CartContext.Provider>
