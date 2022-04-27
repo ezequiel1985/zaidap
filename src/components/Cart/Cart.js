@@ -23,7 +23,10 @@ const Cart = () => {
             <h1>Carrito de compras</h1>
             <ul>
                 {
-                    cart.map(prod => <p key={prod.id}>Producto: {prod.title} - Cantidad: {prod.quantity}- Precio unit: $ {prod.price} - Subtotal: $ {prod.quantity * prod.price} <button style={{textDecoration:'none', alignItems:'center'}} onClick={()=> removeItem(prod.id)}> Eliminar </button> <ItemCount/></p>)
+                    cart.map(prod => <p key={prod.id}>Producto: {prod.title} 
+                    - Cantidad: {prod.quantity}
+                    - Precio unit: $ {prod.price} 
+                    - Subtotal: $ {prod.quantity * prod.price} <button style={{textDecoration:'none', alignItems:'center'}} onClick={()=> removeItem(prod.id)}> Eliminar </button></p>)
                 }
                 
             </ul>

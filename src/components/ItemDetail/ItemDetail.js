@@ -21,7 +21,6 @@ const ItemDetail = ({ id, title, category, price, description, pictureUrl,}) =>{
     return (
         <>
             <div className='container-product'>
-                <h1 className="title"> Hola</h1>
                 <picture className='sombra'>
                     <img className="responsive" src={pictureUrl} alt={title}/>
                 </picture>
@@ -30,8 +29,11 @@ const ItemDetail = ({ id, title, category, price, description, pictureUrl,}) =>{
                 <p>categoria: {category}</p>
             
             <footer>
-            {false ? <button><Link to='/cart' style={{textDecoration:'none', alignItems:'center'}}>Ir al carrito</Link></button> : <ItemCount initial={getQuantityProd(id)} stock={10} onAdd={handleAdd}/> }
-            {isInCart(id) ? <button><Link to='/cart' style={{textDecoration:'none', alignItems:'center'}}>Finalizar compra </Link></button> : "" }
+            {/* {false ? <button><Link to='/cart' style={{textDecoration:'none', alignItems:'center'}}>Ir al carrito</Link></button> : <ItemCount initial={getQuantityProd(id)} stock={10} onAdd={handleAdd}/> }
+            {isInCart(id) ? <button><Link to='/cart' style={{textDecoration:'none', alignItems:'center'}}>Finalizar compra </Link></button> : "" } */}
+            <ItemCount initial={getQuantityProd(id)} stock={10} onAdd={handleAdd}/>
+            {isInCart(id) ? <button><Link to='/cart' style={{textDecoration:'none', alignItems:'center'}}>Ir al carrito</Link></button> : "" } 
+            
             </footer>
             </div>
             </>
