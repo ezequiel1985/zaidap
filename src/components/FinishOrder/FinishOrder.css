@@ -1,0 +1,27 @@
+.formContainer {
+	margin: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.formContainer__form {
+	
+	display: flex;
+	flex-direction: column;
+	width: 480px;
+	
+	/* transform: translate(-50%, -50%); */
+	background-color:#595959;
+	padding: 20px;
+}
+.formContainer__form label{
+    color: white;
+}
+.form__input {
+	margin-bottom: 10px;
+	border: 1px solid #666;
+}
+.formContainer__form button{
+    width: 90px;
+    background-color: #87D6F7;
+}

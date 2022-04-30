@@ -22,17 +22,18 @@
       }
                 
       /* Agrega una clase activa para resaltar la página actual */
-    .topnav a.active {
+    .resalta {
         background-color: #87D6F7;
         color: #595959;      
       }
-
+       /*categories*/
       .Categories {
         display: flex;
         justify-content: space-around;
         align-items: center;
         background: #595959;
       }
+      
       .Option {
         text-decoration: none;
         background:#595959;

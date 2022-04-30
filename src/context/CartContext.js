@@ -1,3 +1,6 @@
+// SI TENEMOS 2 ESTADOS DENTRO DEL CARTcONTEXT ES UN PROBLEMA, ayq eu si el 2do depende del 1ro
+//LOS ESTADOS SE ACTUALIZAN DESPUES DE QUE finalizan la ejecuación de LAS FUNCIONES.
+ 
 import { createContext, useState } from "react";
 
 const CartContext = createContext()

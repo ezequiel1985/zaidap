@@ -1,5 +1,6 @@
 import CartContext from '../../context/CartContext';
 import { useContext } from 'react';
+import { Link } from 'react-router-dom';
 
 const CartWidget =() => {
 
@@ -7,10 +8,10 @@ const CartWidget =() => {
 
     return(
         <>
-        <a href="/cart" className="icon" /*target="_blank"*/>
-            <img src='../images/cartIcon.svg'/>
-        { getQuantity() }
-        </a>
+        <Link to='/cart' className="icon" style={{textDecoration:'none', color: 'white'}}>
+            <img src='../images/cartIcon.svg' alt='Icon Cart'/>
+          { getQuantity() }
+        </Link>
         </>
     ) 
 }

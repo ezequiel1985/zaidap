@@ -4,10 +4,12 @@ import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailCont
 import Cart from './components/Cart/Cart';
 import NavBar from './components/NavBar/NavBar';
 import Home from './components/Home/Home';
+import FinishOrder from './components/FinishOrder/FinishOrder';
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { createContext } from "react";
 import { CartContextProvider} from './context/CartContext';
+
 
 
 function App() {
@@ -23,6 +25,7 @@ function App() {
               <Route path='/category/:categoryId' element={<ItemListContainer />} />
               <Route path='/detail/:productId' element={<ItemDetailContainer />} />
               <Route path='/cart' element={<Cart />} />
+              <Route path="/order" element={<FinishOrder/>}/>
            </Routes>
       </BrowserRouter>
       </CartContextProvider>
