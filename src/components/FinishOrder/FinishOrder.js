@@ -2,7 +2,8 @@ import "./FinishOrder.css"
 import CartContext from "../../context/CartContext"
 import { useContext, useState } from "react"
 import { firestoreDb} from '../../services/firebase/index'
-import { collection, addDoc } from "firebase/firestore"
+import { collection, addDoc, getDocs, where, query,documentId, writeBatch } from "firebase/firestore"
+import { Link } from 'react-router-dom'
 
 //seteo el form vacio
 const buyerForm= {
@@ -42,10 +43,38 @@ const FinishOrder = () => {
         total: getTotal(),
         date: new Date()
     }
-    const collectionRef = collection(firestoreDb, 'orders')
-        setOrderId(( await addDoc(collectionRef, order)).id)
+    const collectionRefOrder = collection(firestoreDb, 'orders')
+        setOrderId(( await addDoc(collectionRefOrder, order)).id)
         orderConfirmed(orderId)
+
 }
+//Para bajar stock en FIREBASE
+const outStock = () =>{
+    const ids = cart.map(p => p.id)
+    const batch = writeBatch(firestoreDb);
+    const collectionRefStock = collection(firestoreDb, 'products');
+
+    getDocs(query(collectionRefStock, where(documentId(), 'in', ids)))
+        .then(response =>{
+            response.docs.forEach(doc=>{
+                const dataDoc = doc.data()
+                const prodQuantity = cart.find(p=> p.id === doc.id)?.quantity // trae la cantidad donde los id son iguales. 
+
+                if(dataDoc.stock >= prodQuantity) {
+                   batch.update(doc.ref, {stock: dataDoc.stock - prodQuantity})
+                   batch.commit()
+                }
+            })
+        }).catch(err =>{
+            console.log(err)
+        })
+
+}
+const orderAndStock = () =>{
+    createOrder();
+    outStock();
+}
+
 if(orderStatus === 'confirmado') {
     return(
         <>
@@ -53,6 +82,7 @@ if(orderStatus === 'confirmado') {
         <h1>Gracias por tu compra.</h1>
         <p>Tu numero de orden es {orderId} .</p>
         <h3>No olvides tomar nota de tu orden para retirar tus productos</h3>
+        <button><Link to='/' style={{textDecoration:'none', alignItems:'center', color:'#595959'}}>Pagina Principal</Link>  </button>
         </div>
         </>
     )
@@ -93,7 +123,7 @@ if(orderStatus === 'confirmado') {
                                 className="form__input" 
                                 placeholder="Escribí tu email" />
                     
-                    <button onClick={() => createOrder()}> Ordenar </button>
+                    <button onClick={() => orderAndStock()}> Ordenar </button>
                 </form>
             </div>
         </>

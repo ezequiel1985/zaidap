@@ -4,6 +4,7 @@ import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailCont
 import Cart from './components/Cart/Cart';
 import NavBar from './components/NavBar/NavBar';
 import Home from './components/Home/Home';
+import Garantia from '../src/routes/Garantia'
 import FinishOrder from './components/FinishOrder/FinishOrder';
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
@@ -20,7 +21,7 @@ function App() {
           <NavBar/>
           <Routes>
               <Route path='*' element={<h1>NOT FOUND 404</h1>}/>
-              <Route path='/home' element={<Home/>}/>
+              <Route path='/Garantia' element={<Garantia/>}/>
               <Route path='/' element={<ItemListContainer/>}/>
               <Route path='/category/:categoryId' element={<ItemListContainer />} />
               <Route path='/detail/:productId' element={<ItemDetailContainer />} />
