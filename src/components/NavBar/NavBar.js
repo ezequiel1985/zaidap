@@ -1,32 +1,26 @@
 import CartWidget from '../CartWidget/CartWidget'
 import './NavBar.css'
 import { NavLink } from 'react-router-dom'
-import { useState, useEffect, useContext } from 'react'
-//import { getCategories } from "../../asyncMock"
+import { useState, useContext } from 'react'
+import { getCategoriesNavbar} from '../../services/firebase/firestore'
 import CartContext from '../../context/CartContext'
-import { firestoreDb } from '../../services/firebase'
-import { getDocs, collection } from 'firebase/firestore'
+import { useAsync } from "../../hooks/useAsync"
+
 
 
 const NavBar = () => {
     
     const { cart } = useContext(CartContext)
+    const [loading, setLoading] = useState(true)
+    const [categories, setCategories] = useState([])
 
-    const [categories,setCategories] = useState([])
-
-    useEffect(()=>{
-        // getCategories().then(categories =>{
-        //     setCategories(categories)
-        // })
-
-        getDocs(collection(firestoreDb, 'categories')).then(response =>{
-            const categories = response.docs.map(doc => {
-                return {id: doc.id, ...doc.data()}
-            })
-            setCategories(categories)
-        })
-    }, [])
-
+    useAsync(
+        setLoading,
+        ()=>getCategoriesNavbar(categories),
+        setCategories,
+        () => console.log('Hubo un error en el Navbar')
+    )
+    
     return(
             <nav>
                 <img className="logo-img-none" src={'./images/logo-zaidap3.svg'} alt="" />

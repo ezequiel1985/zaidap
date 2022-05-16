@@ -1,3 +1,5 @@
+ItemDetail = ver onAdd en linea 36 ya que genera una nueva linea en lugar de modificar la nueva.
+
 ## MANUAL DE MARCA ZAIDAP
 
 

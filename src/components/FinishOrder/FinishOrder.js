@@ -5,6 +5,7 @@ import { firestoreDb} from '../../services/firebase/index'
 import { collection, addDoc, getDocs, where, query,documentId, writeBatch } from "firebase/firestore"
 import { Link } from 'react-router-dom'
 
+
 //seteo el form vacio
 const buyerForm= {
     name:"",
@@ -35,19 +36,20 @@ const FinishOrder = () => {
     }
 
     //Para crear order en FIREBASE
+    //Para crear order en FIREBASE
     const createOrder = async  () => {
-    setOrderStatus('procesando')    
-    const order = {
-        ItemsOrder: cart.map(p=> {return ({id: p.id, title: p.title, price: p.price, quantity: p.quantity })}),
-        form: buyer,
-        total: getTotal(),
-        date: new Date()
+        setOrderStatus('procesando')    
+        const order = {
+            ItemsOrder: cart.map(p=> {return ({id: p.id, title: p.title, price: p.price, quantity: p.quantity })}),
+            form: buyer,
+            total: getTotal(),
+            date: new Date()
+        }
+        const collectionRefOrder = collection(firestoreDb, 'orders')
+            setOrderId(( await addDoc(collectionRefOrder, order)).id)
+            orderConfirmed(orderId)
+    
     }
-    const collectionRefOrder = collection(firestoreDb, 'orders')
-        setOrderId(( await addDoc(collectionRefOrder, order)).id)
-        orderConfirmed(orderId)
-
-}
 //Para bajar stock en FIREBASE
 const outStock = () =>{
     const ids = cart.map(p => p.id)
@@ -70,10 +72,13 @@ const outStock = () =>{
         })
 
 }
+
 const orderAndStock = () =>{
     createOrder();
     outStock();
+    
 }
+
 
 if(orderStatus === 'confirmado') {
     return(
