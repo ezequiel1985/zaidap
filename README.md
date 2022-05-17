@@ -1,78 +1,35 @@
-ItemDetail = ver onAdd en linea 36 ya que genera una nueva linea en lugar de modificar la nueva.
+## ZAIDAP
 
-## MANUAL DE MARCA ZAIDAP
+Soy Ezequiel Jaureguiberry y el proyecto realizado es para el curso de React JS de CODERHOUSE. 
+El mismo consiste en una tienda online de insumos de tecnología para atender a los clientes de cercania. En ella podrás navegar por 4 categorías de productos, armar tu carrito de productos con stock y adquirir tu orden de compra de los productos que has seleccionado. La orden de compra se encarga de verificar si hay stock de productos, bajar el stock de los productos cuando son confirmados en una orden de compra y emitir una orden de compra.
 
 
+## Clonar el proyecto (branch desafio13) con git clone, ingresar a la carpeta del mismo e instalar librerias con:
 
-# create-react-app
-Aqui comienza los comentarios que trae ejecutar create-react-app 
-# Getting Started with Create React App
+npm install
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Correr el proyecto con:
 
-## Available Scripts
+npm start.
+Si no se abre el navegador de forma automatica, abrir y ejecutar http://localhost:3000 
 
-In the project directory, you can run:
+## Carpeta CartContext:
+addItem = agrega productos al carrito, se utiliza en ItemDetail en función handleAdd donde en el 2do parametro seteamos que addItem pase la info de productObj.
 
-### `npm start`
+getQuantity = //Muestra cantidad de productos en carrito en el CartWidgt
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+isInCart = Verifica si X producto ya está en el carrito para evitar duplicados. El metodo some recorre el array y devuelve true cuando encuentra coincidencia. Se utiliza en ItemDetail.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+clearCart = Para vaciar el carrito, donde seteamos un array vacio.
 
-### `npm test`
+removeItem = Para remover productos del carrito.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+getTotal = Para obtener el valor final del carrito.
 
-### `npm run build`
+getQuantityProd = identificar la cantidad de productos que hay en carrito. Se utiliza en itemDetail para indicar cual es la cantidad inicial de initial. Se utiliza en ItemCount, se pasa al useState initial como valor inicial para identificar la cantidad de X productos que hay en cart.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Carpeta Hooks
+Se crea un custom hooks para verificar loading y que esté activo.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Carpeta Services
+Se extraen partes de las consultas a FIREBASE por si migramos de base de datos. Quedan pendiente migrar las funciones del registro de la orden, la baja del stock y la generación del código de compra.
